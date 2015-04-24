@@ -1,0 +1,123 @@
+// bower:scss
+// endbower
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300);
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+
+.table-wrapper {
+  @include aspect-ratio(16,9);
+}
+.table {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 5%;
+  bottom: 25%;
+  border-radius: 50%;
+  background: url("https://www.ethereum.org/images/Ethereum-BGD_4K_2.png") center center no-repeat #161c30;
+  box-shadow: 1px 1px 10px black;
+}
+
+.heads-up {
+  .seat-1 {
+    position: absolute;
+    top: 36%;
+    bottom: 56%;
+    left: 5%;
+    right: 85%;
+    box-shadow: 1px 1px 10px black;
+    background-color: cyan;
+  }
+
+  .seat-2 {
+    position: absolute;
+    top: 36%;
+    bottom: 56%;
+    left: 85%;
+    right: 5%;
+    box-shadow: 1px 1px 10px black;
+    background-color: cyan;
+  }
+}
+
+.seat {
+  color: black;
+  font-size: 14px;
+  text-align: center;
+  min-height: 50px;
+}
+
+.player-name, .player-stack {
+  height: 50%;
+  line-height: 200%;
+  overflow: hidden;
+}
+
+.table {
+  .cards {
+    position: absolute;
+    top: 25%;
+    width: 50%;
+    left: 25%;
+    text-align: center;
+  }
+  .cards-wrapper {
+    width: 100%;
+    padding-bottom: 31%;
+    position: relative;
+  }
+  .card {
+    position: absolute;
+    top: 5%;
+    bottom: 5%;
+    width: 19%;
+    background-size: cover;
+  }
+}
+
+
+.table .card:nth-of-type(1){
+  left: 0%;
+}
+.table .card:nth-of-type(2){
+  left: 20%;
+}
+.table .card:nth-of-type(3){
+  left: 40%;
+}
+.table .card:nth-of-type(4){
+  left: 60%;
+}
+.table .card:nth-of-type(5){
+  left: 80%;
+}
+
+
+
