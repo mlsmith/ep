@@ -2,6 +2,8 @@
 // endbower
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300);
 
+$dark: #222;
+
 @mixin aspect-ratio($width, $height) {
   position: relative;
   &:before {
@@ -10,13 +12,37 @@
     width: 100%;
     padding-top: ($height / $width) * 100%;
   }
-  > .content {
+  & > .content {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
   }
+}
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin vertical-align-2 {
+  position: relative;
+  top: 33%;
+  -webkit-transform: translateY(-66%);
+  -ms-transform: translateY(-66%);
+  transform: translateY(-66%);
+}
+
+@mixin vertical-align-3 {
+  position: relative;
+  top: 66%;
+  -webkit-transform: translateY(-33%);
+  -ms-transform: translateY(-33%);
+  transform: translateY(-33%);
 }
 
 .browsehappy {
@@ -31,6 +57,63 @@ body {
 }
 
 
+.info-box {
+  position: absolute;
+  left: 1%;
+  right: 70%;
+  top: 80%;
+  bottom: 1%;
+  min-width: 135px;
+  background-color: white;
+  color: black;
+  box-shadow: 2px 4px 10px black;
+
+  .tabs {
+    position: relative;
+    top: -22px;
+    min-width: 135px;
+
+    & > * {
+      background-color: black;
+      color: white;
+      padding: 2px 15px;
+    }
+  }
+}
+
+.action-container {
+  position: absolute;
+  right: 0;
+  left: 33%;
+  bottom: 1%;
+  top: 85%;
+  text-align: right;
+
+  & > div { 
+    height: 100%;
+  }
+  
+  .action {
+    font-size: 18px;
+    font-weight: bold;
+    @include vertical-align;
+  }
+
+  .button {
+    display: inline-block;
+    vertical-align: top;
+    width: 20%;
+    height: 100%;
+    margin-right: 5%;
+    text-align: center;
+    background-color: $dark;
+    color: white;
+    cursor: pointer;
+    box-shadow: 1px 1px 10px black;
+  }
+}
+
+
 .table-wrapper {
   @include aspect-ratio(16,9);
 }
@@ -38,33 +121,67 @@ body {
   position: absolute;
   left: 10%;
   right: 10%;
-  top: 5%;
-  bottom: 25%;
+  top: 3%;
+  bottom: 27%;
   border-radius: 50%;
   max-width: 1400px;
   background: url("https://www.ethereum.org/images/Ethereum-BGD_4K_2.png") center center no-repeat #161c30;
-  box-shadow: 1px 1px 10px black;
+  box-shadow: 1px 1px 27px black;
+}
+
+.slider {
+  position: absolute;
+  bottom: 20%;
+  right: 4%;
+  left: 83%;
+  top: 80%;
+  & > input {
+    width: 100%;
+  }
 }
 
 .heads-up {
+  .cards-1 {
+    top: 25%;
+    bottom: 54%;
+    left: 4%;
+    right: 81%;
+  }
+
   .seat-1 {
-    position: absolute;
     top: 36%;
-    bottom: 56%;
-    left: 5%;
-    right: 85%;
-    box-shadow: 1px 1px 10px black;
-    background-color: cyan;
+    bottom: 54%;
+    left: 3%;
+    right: 81%;
+  }
+
+  .cards-2 {
+    top: 25%;
+    bottom: 54%;
+    left: 82%;
+    right: 3%;
   }
 
   .seat-2 {
-    position: absolute;
     top: 36%;
-    bottom: 56%;
-    left: 85%;
-    right: 5%;
+    bottom: 54%;
+    left: 81%;
+    right: 3%;
+  }
+
+  .cards {
+    position: absolute;
+    & > img {
+      width: 46%;
+    }
+  }
+
+  .seat {
+    position: absolute;
     box-shadow: 1px 1px 10px black;
-    background-color: cyan;
+    background-color: $dark;
+    color: white;
+
   }
 }
 
@@ -100,6 +217,12 @@ body {
     bottom: 5%;
     width: 19%;
     background-size: cover;
+  }
+  .empty {
+    border: 1px dashed white;
+    &:not(:nth-of-type(1)) {
+      border-left: none;
+    }
   }
 }
 

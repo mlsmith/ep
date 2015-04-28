@@ -3,20 +3,72 @@
     <div class="cards"><div class="cards-wrapper">
       <div class="card" style="background-image: url('../images/cards/2c.png');"></div>
       <div class="card" style="background-image: url('../images/cards/5h.png');"></div>
-      <div class="card" style="background-image: url('../images/cards/ac.png');"></div>
-      <div class="card" style="background-image: url('../images/cards/10d.png');"></div>
-      <div class="card" style="background-image: url('../images/cards/js.png');"></div>
+      <div class="card" style="background-image: url('../images/cards/Ac.png');"></div>
+      <div class="card" style="background-image: url('../images/cards/Td.png');"></div>
+      <div class="card" style="background-image: url('../images/cards/Js.png');"></div>
     </div></div>
   </div>
   <div class="seats heads-up">
+    <div class="cards cards-1">
+      <img ng-src="../images/cards/{{game.players[1].hand[0]}}.png">
+      <img ng-src="../images/cards/{{game.players[1].hand[1]}}.png">
+    </div>    
     <div class="seat seat-1">
-      <div class="player-name">Satoshi Nakamoto</div>
-      <div class="player-stack">$333</div>
+      <div class="player-name">{{game.players[1].id}}</div>
+      <div class="player-stack">${{game.players[1].chips}}</div>
+    </div>
+    <div class="cards cards-2">
+      <img ng-src="../images/cards/{{game.players[0].hand[0]}}.png">
+      <img ng-src="../images/cards/{{game.players[0].hand[1]}}.png">
     </div>
     <div class="seat seat-2">
-      <div class="player-name">Nick Szabo</div>
-      <div class="player-stack">$444</div>
+      <div class="player-name">{{game.players[0].id}}</div>
+      <div class="player-stack">${{game.players[0].chips}}</div>
     </div>
   </div>
 </div>
 
+
+<div class="info-box">
+  <div class="tabs">
+    <a>Chat</a>
+    <a>Stats</a>
+  </div>
+</div>
+
+<div class="slider">
+  <input type="range" min="{{minBet}}" max="{{game.players[0].chips}}" ng-model="newWager">
+<!--   <slider floor="{{minBet}}" ceiling="{{game.players[0].chips}}" ng-model="newWager"></slider> -->
+</div>
+
+
+<div ng-if="showActions" class="action-container">
+  <div ng-if="game.highestWager > 0">
+    <div class="button">
+      <div class="action" ng-click="fold()">fold</div>
+    </div>
+    <div class="button">
+      <div class="action" ng-click="call(game.currentWager)">
+        <div>call</div>
+        <div class="amt">{{game.currentWager}}</div> 
+      </div>
+    </div>
+    <div class="button">
+      <div class="action" ng-click="raise(newWager)">
+        <div>raise</div>
+        <div class="amt">{{newWager}}</div>
+      </div>
+    </div>
+  </div>
+  <div ng-if="game.highestWager == 0">
+    <div class="button" ng-click="check()">
+      <div class="action">check</div>
+    </div>
+    <div class="button" ng-click="bet(newWager)">
+      <div class="action">
+        <div>bet</div>
+        <div class="amt">{{newWager}}</div> 
+      </div>
+    </div>
+  </div>
+</div>
