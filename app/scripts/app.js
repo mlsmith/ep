@@ -15,8 +15,7 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch',
-    'vr.directives.slider'
+    'ngTouch'
   ])
   .config(function ($routeProvider, $httpProvider) {
     $routeProvider

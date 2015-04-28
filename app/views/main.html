@@ -1,11 +1,10 @@
 <div class="table-wrapper">
   <div class="table">
     <div class="cards"><div class="cards-wrapper">
-      <div class="card" style="background-image: url('../images/cards/2c.png');"></div>
-      <div class="card" style="background-image: url('../images/cards/5h.png');"></div>
-      <div class="card" style="background-image: url('../images/cards/Ac.png');"></div>
-      <div class="card" style="background-image: url('../images/cards/Td.png');"></div>
-      <div class="card" style="background-image: url('../images/cards/Js.png');"></div>
+      <div ng-repeat="card in game.tableCards"
+           class="card"
+           style="background-image: url('../images/cards/{{card}}.png');"></div>
+
     </div></div>
   </div>
   <div class="seats heads-up">
@@ -20,6 +19,13 @@
     <div class="cards cards-2">
       <img ng-src="../images/cards/{{game.players[0].hand[0]}}.png">
       <img ng-src="../images/cards/{{game.players[0].hand[1]}}.png">
+    </div>
+    <div class="chips">
+      <div class="chip" 
+           ng-repeat="chips in pile"
+           style="{{chips.style}}">
+        <div>{{chips.amt}}</div>
+      </div>
     </div>
     <div class="seat seat-2">
       <div class="player-name">{{game.players[0].id}}</div>
@@ -50,13 +56,13 @@
     <div class="button">
       <div class="action" ng-click="call(game.currentWager)">
         <div>call</div>
-        <div class="amt">{{game.currentWager}}</div> 
+        <div class="amt">${{game.currentWager}}</div> 
       </div>
     </div>
     <div class="button">
       <div class="action" ng-click="raise(newWager)">
         <div>raise</div>
-        <div class="amt">{{newWager}}</div>
+        <div class="amt">${{newWager}}</div>
       </div>
     </div>
   </div>
@@ -67,7 +73,7 @@
     <div class="button" ng-click="bet(newWager)">
       <div class="action">
         <div>bet</div>
-        <div class="amt">{{newWager}}</div> 
+        <div class="amt">${{newWager}}</div> 
       </div>
     </div>
   </div>

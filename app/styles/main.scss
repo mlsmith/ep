@@ -226,6 +226,54 @@ body {
   }
 }
 
+.chips {
+  position: absolute;
+  left: 72%;
+  top: 19%;
+  bottom: 50%;
+  right: 19%;
+  background-color: cyan;
+
+  .chip-1 {
+    background-color: white;
+  }
+  .chip-2 {
+    background-color: red;
+  }
+  .chip-3 {
+    background-color: blue;
+  }
+  .chip-4 {
+    background-color: green;
+  }
+  .chip-5 {
+    background-color: black;
+  }
+}
+
+.chip {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 13px;
+    height: 13px;
+    border-radius: 150px;
+    -webkit-border-radius: 150px;
+    -moz-border-radius: 150px;
+    box-shadow: inset 0 0 1px 1px rgba(0,0,0, 0.1), 0 0 5px 1px rgba(90,90,90, 0.1), inset 0 35px 1px rgba(255,255,255, 0.2);
+    -moz-box-shadow: inset 0 0 1px 1px rgba(0,0,0, 0.1), 0 0 5px 1px rgba(90,90,90, 0.1), inset 0 35px 1px rgba(255,255,255, 0.2);
+    -webkit-box-shadow: inset 0 0 1px 1px rgba(0,0,0, 0.1), 0 0 5px 1px rgba(90,90,90, 0.1), inset 0 35px 1px rgba(255,255,255, 0.2);
+    border: 2px dashed #fff;
+  div {
+    text-align: center;
+    line-height: 13px;
+    font-size: 8px;
+    color: white;
+  }
+}
+
+
+
 
 .table .card:nth-of-type(1){
   left: 0%;
