@@ -1,23 +1,21 @@
 <div class="table-wrapper">
   <div class="table">
-    <div class="cards"><div class="cards-wrapper">
-      <div ng-repeat="card in game.tableCards"
+    <div class="cards" ng-if="game.tableCards.length"><div class="cards-wrapper">
+      <img ng-repeat="card in game.tableCards"
            class="card"
-           style="background-image: url('../images/cards/{{card}}.png');"></div>
-
+           ng-src="../images/cards/{{card}}.png"></img>
     </div></div>
-
-    <div ng-if="game.pot" class="pot">
+  </div>
+  <div class="seats heads-up" ng-if="game">
+    <div ng-if="game.pot" class="{{potLocation}}">
       <div class="chip" 
-           ng-repeat="chips in pile1"
+           ng-repeat="chips in potPile"
            style="{{chips.style}}">
         <div>{{chips.amt}}</div>
       </div>
-      <div>{{game.pot}}</div>
+      <div class="pile-label">${{game.pot}}</div>
     </div>
-  </div>
-  <div class="seats heads-up">
-    <div class="cards cards-1">
+    <div class="cards cards-1" ng-if="game.players[1].hand">
       <img ng-src="../images/cards/{{game.players[1].hand[0]}}.png">
       <img ng-src="../images/cards/{{game.players[1].hand[1]}}.png">
     </div>  
@@ -33,7 +31,7 @@
       <div class="player-name">{{game.players[1].id}}</div>
       <div class="player-stack">${{game.players[1].chips}}</div>
     </div>
-    <div class="cards cards-0">
+    <div class="cards cards-0" ng-if="game.players[0].hand">
       <img ng-src="../images/cards/{{game.players[0].hand[0]}}.png">
       <img ng-src="../images/cards/{{game.players[0].hand[1]}}.png">
     </div>
@@ -60,34 +58,34 @@
   </div>
 </div>
 
-<div class="slider">
+<div class="slider" ng-show="showActions">
   <input type="range" min="{{minBet}}" max="{{game.players[0].chips}}" ng-model="newWager">
 </div>
 
 
 <div ng-if="showActions" class="action-container">
-  <div ng-if="game.highestWager > 0">
+  <div ng-if="game.highestWager > game.players[0].currentWager">
     <div class="button">
       <div class="action" ng-click="fold()">fold</div>
     </div>
     <div class="button">
-      <div class="action" ng-click="call(game.currentWager)">
+      <div class="action" ng-click="call()">
         <div>call</div>
-        <div class="amt">${{game.highestWager - game.players[0].currentWager}}</div> 
+        <div class="amt">${{callAmount}}</div> 
       </div>
     </div>
     <div class="button">
-      <div class="action" ng-click="raise(newWager)">
+      <div class="action" ng-click="raise(newWager)" ng-if="game.highestWager - game.players[0].currentWager < game.players[0].chips">
         <div>raise</div>
         <div class="amt">${{newWager}}</div>
       </div>
     </div>
   </div>
-  <div ng-if="game.highestWager == 0">
+  <div ng-if="game.highestWager == game.players[0].currentWager">
     <div class="button" ng-click="check()">
       <div class="action">check</div>
     </div>
-    <div class="button" ng-click="bet(newWager)">
+    <div class="button" ng-click="bet(newWager)" ng-if="game.players[1].chips">
       <div class="action">
         <div>bet</div>
         <div class="amt">${{newWager}}</div> 
