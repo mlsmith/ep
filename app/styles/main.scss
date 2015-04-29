@@ -66,7 +66,7 @@ body {
   min-width: 135px;
   background-color: white;
   color: black;
-  box-shadow: 2px 4px 10px black;
+  box-shadow: 2px 2px 5px black;
 
   .tabs {
     position: relative;
@@ -126,15 +126,15 @@ body {
   border-radius: 50%;
   max-width: 1400px;
   background: url("https://www.ethereum.org/images/Ethereum-BGD_4K_2.png") center center no-repeat #161c30;
-  box-shadow: 1px 1px 27px black;
+  box-shadow: 1px 1px 11px black;
 }
 
 .slider {
   position: absolute;
   bottom: 20%;
-  right: 4%;
+  right: 3%;
   left: 83%;
-  top: 80%;
+  top: 77%;
   & > input {
     width: 100%;
   }
@@ -144,35 +144,37 @@ body {
   .cards-1 {
     top: 25%;
     bottom: 54%;
-    left: 4%;
-    right: 81%;
+    left: 3%;
+    right: 82%;
   }
 
   .seat-1 {
     top: 36%;
     bottom: 54%;
-    left: 3%;
-    right: 81%;
+    left: 2%;
+    right: 82%;
   }
 
-  .cards-2 {
+  .cards-0 {
     top: 25%;
     bottom: 54%;
-    left: 82%;
-    right: 3%;
+    left: 83%;
+    right: 2%;
   }
 
-  .seat-2 {
+  .seat-0 {
     top: 36%;
     bottom: 54%;
-    left: 81%;
-    right: 3%;
+    left: 82%;
+    right: 2%;
   }
 
   .cards {
     position: absolute;
     & > img {
       width: 46%;
+      background-color: black;
+      border-radius: 3px;
     }
   }
 
@@ -181,20 +183,31 @@ body {
     box-shadow: 1px 1px 10px black;
     background-color: $dark;
     color: white;
+    font-size: 14px;
+    text-align: center;
+    min-height: 50px;
 
+    &.active {
+      margin: -1px;
+      border: 1px solid white;
+    }
   }
 }
+.player-name{
+  position: absolute;
+  top: 15%;
+  left: 0;
+  right: 0;
+  bottom: 55%;
+  overflow: hidden;
+} 
 
-.seat {
-  color: black;
-  font-size: 14px;
-  text-align: center;
-  min-height: 50px;
-}
-
-.player-name, .player-stack {
-  height: 50%;
-  line-height: 200%;
+.player-stack {
+  position: absolute;
+  top: 55%;
+  left: 0;
+  right: 0;
+  bottom: 5%;
   overflow: hidden;
 }
 
@@ -224,30 +237,45 @@ body {
       border-left: none;
     }
   }
+  .pot {
+    text-align: center;
+    position: absolute;
+    color: white;
+    font-size: 18px;
+    left: 45%;
+    right: 45%;
+    top: 65%;
+    bottom: 35%;
+  }
 }
 
-.chips {
+.chips-1 {
+  position: absolute;
+  left: 19%;
+  top: 19%;
+  bottom: 50%;
+  right: 72%;
+
+  .pile-label {
+    color: white;
+    position: absolute;
+    bottom: -25px;
+    left: 10px;
+  }
+}
+
+.chips-0 {
   position: absolute;
   left: 72%;
   top: 19%;
   bottom: 50%;
   right: 19%;
-  background-color: cyan;
 
-  .chip-1 {
-    background-color: white;
-  }
-  .chip-2 {
-    background-color: red;
-  }
-  .chip-3 {
-    background-color: blue;
-  }
-  .chip-4 {
-    background-color: green;
-  }
-  .chip-5 {
-    background-color: black;
+  .pile-label {
+    color: white;
+    position: absolute;
+    bottom: -25px;
+    right: 10px;
   }
 }
 

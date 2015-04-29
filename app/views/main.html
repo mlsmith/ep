@@ -6,28 +6,46 @@
            style="background-image: url('../images/cards/{{card}}.png');"></div>
 
     </div></div>
+
+    <div ng-if="game.pot" class="pot">
+      <div class="chip" 
+           ng-repeat="chips in pile1"
+           style="{{chips.style}}">
+        <div>{{chips.amt}}</div>
+      </div>
+      <div>{{game.pot}}</div>
+    </div>
   </div>
   <div class="seats heads-up">
     <div class="cards cards-1">
       <img ng-src="../images/cards/{{game.players[1].hand[0]}}.png">
       <img ng-src="../images/cards/{{game.players[1].hand[1]}}.png">
-    </div>    
-    <div class="seat seat-1">
-      <div class="player-name">{{game.players[1].id}}</div>
-      <div class="player-stack">${{game.players[1].chips}}</div>
-    </div>
-    <div class="cards cards-2">
-      <img ng-src="../images/cards/{{game.players[0].hand[0]}}.png">
-      <img ng-src="../images/cards/{{game.players[0].hand[1]}}.png">
-    </div>
-    <div class="chips">
+    </div>  
+    <div class="chips-1" ng-if="pile1">
       <div class="chip" 
-           ng-repeat="chips in pile"
+           ng-repeat="chips in pile1"
            style="{{chips.style}}">
         <div>{{chips.amt}}</div>
       </div>
+      <div class="pile-label">${{game.players[1].currentWager}}</div>
+    </div>  
+    <div class="seat seat-1" ng-class="{active: !showActions}">
+      <div class="player-name">{{game.players[1].id}}</div>
+      <div class="player-stack">${{game.players[1].chips}}</div>
     </div>
-    <div class="seat seat-2">
+    <div class="cards cards-0">
+      <img ng-src="../images/cards/{{game.players[0].hand[0]}}.png">
+      <img ng-src="../images/cards/{{game.players[0].hand[1]}}.png">
+    </div>
+    <div class="chips-0" ng-if="pile0">
+      <div class="chip" 
+           ng-repeat="chips in pile0"
+           style="{{chips.style}}">
+        <div>{{chips.amt}}</div>
+      </div>
+      <div class="pile-label">${{game.players[0].currentWager}}</div>
+    </div>
+    <div class="seat seat-0" ng-class="{active: showActions}">
       <div class="player-name">{{game.players[0].id}}</div>
       <div class="player-stack">${{game.players[0].chips}}</div>
     </div>
@@ -44,7 +62,6 @@
 
 <div class="slider">
   <input type="range" min="{{minBet}}" max="{{game.players[0].chips}}" ng-model="newWager">
-<!--   <slider floor="{{minBet}}" ceiling="{{game.players[0].chips}}" ng-model="newWager"></slider> -->
 </div>
 
 
@@ -56,7 +73,7 @@
     <div class="button">
       <div class="action" ng-click="call(game.currentWager)">
         <div>call</div>
-        <div class="amt">${{game.currentWager}}</div> 
+        <div class="amt">${{game.highestWager - game.players[0].currentWager}}</div> 
       </div>
     </div>
     <div class="button">
