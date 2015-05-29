@@ -21,7 +21,6 @@ angular.module('etherpokerApp')
     $scope.$watch('game.handComplete', function (handComplete){
       if (handComplete) {
         if (handComplete.winner === 0){
-          console.log('herro');
           $scope.potPile = chipsWagered($scope.game.pot, 'right');
         } else {
           $scope.potPile = chipsWagered($scope.game.pot, 'left');
